@@ -105,7 +105,7 @@ contract NftMarketplace is ReentrancyGuard {
         // Add amount to seller
         s_proceeds[listedItem.seller] += msg.value;
         // Remove from listing
-        delete s_listings[nftAddress][tokenId];
+        delete (s_listings[nftAddress][tokenId]);
         // Transfer nft
         IERC721 nft = IERC721(nftAddress);
         nft.safeTransferFrom(listedItem.seller, msg.sender, tokenId);
@@ -142,7 +142,7 @@ contract NftMarketplace is ReentrancyGuard {
         }
     }
 
-    /* Getter Fucntions */
+    /* Getter Functions */
     function getListing(
         address nftAddress,
         uint256 tokenId
